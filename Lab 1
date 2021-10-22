@@ -1,0 +1,52 @@
+// Code for using Scanner class
+
+import java.util.Scanner;
+import java.lang.*;
+
+public class Java2
+{
+   public static void main(String args[])
+   {
+      int a;
+      float b;
+      String s;
+      Scanner scan = new Scanner(System.in);
+      System.out.print("Enter an integer: ");
+      a = scan.nextInt();
+      System.out.println("You entered integer: " + a);
+      System.out.print("Enter a float: ");
+      b = scan.nextFloat();
+      scan.nextLine();
+      System.out.println("You entered float: " + b);
+      System.out.print("Enter a string : ");
+      s = scan.nextLine();
+      System.out.println("You entered string: " + s);
+   }
+}
+
+
+
+// Code for determining whether a number is odd or even.
+
+import java.util.Scanner;
+import java.lang.*;
+
+public class Java3
+{
+  public static void main(String args[])
+  {
+    int a;
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter a number: ");
+    a = scan.nextInt();
+    if(a%2 == 0)
+    {
+      System.out.printf("%d is an even number",a);
+    }
+    else
+    {
+     System.out.printf("%d is an odd number",a);
+    }
+
+  }
+} 
