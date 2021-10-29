@@ -1,0 +1,37 @@
+import java.lang.*;
+import java.util.Scanner;
+
+public class Java7
+{
+    public static void main(String args[])
+    {
+        int a,b,i,j,flag;
+        float avg;
+        System.out.println("Please enter the first number of your range: "); 
+        Scanner sc = new Scanner(System.in);
+        a = sc.nextInt(); 
+        System.out.println("Please enter the last number of your range: "); 
+        b = sc.nextInt(); 
+        System.out.printf("Prime numbers between %d and %d are: ",a,b); 
+        for(i=a;i<=b;i++)
+        {
+           if(i == 1 || i == 0)
+           {
+               continue;
+           }
+           flag = 1;  
+           for(j = 2; j<=i/2;++j)
+           {    
+              if(i%j== 0)
+              {      
+                 flag = 0;
+                 break;        
+              }      
+           }
+           if(flag==1)
+           {
+              System.out.println(i);
+           }
+        } 
+    }     
+}
