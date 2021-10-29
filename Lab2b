@@ -1,0 +1,50 @@
+import java.lamg.*;
+import java.util.Scanner;
+
+public class Java6
+{
+    public static void main(String args[])
+    {
+        int a,b;
+        float average;
+        Scanner sc = new Scanner(System.in); 
+        System.out.println("Please enter the CIE marks (out of 50): ");
+        a = sc.nextInt();
+        System.out.println("Please enter the SEE marks (out of 100): ");
+        b = sc.nextInt();
+        average = a + (b/2);
+        System.out.println("Your grade is: ");
+        if(a<20 || b<40)
+        {
+            System.out.println("F");
+        }
+        else if(average>40 && average<50)
+        {
+           System.out.println("E");
+        }
+        else if(average>50 && average<60)
+        {
+           System.out.println("D");
+        }
+        else if(average>60 && average<70)
+        {
+           System.out.println("C");
+        }
+        else if(average>70 && average<80)
+        {
+           System.out.println("B");
+        }
+        else if(average>80 && average<90)
+        {
+           System.out.println("A");
+        }
+        else if(average>90 && average<=100)
+        {
+           System.out.println("S");
+        }
+        else
+        {
+            System.out.println("Error!!");   
+        }
+    }
+}
