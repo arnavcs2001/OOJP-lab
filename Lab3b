@@ -1,0 +1,78 @@
+import java.util.Scanner;
+import java.lang.*;
+
+class Student
+{  
+   String name;
+   int usn;
+   char credits[];
+   int marks[];
+   double SGPA;
+
+   public void accept()
+   {
+      int i;
+      Scanner scan = new Scanner(System.in);
+      name = scan.nextLine();
+      System.out.println("Please enter the name: " + name);
+      usn = scan.nextInt();
+      System.out.println("Please enter the usn: " + usn);
+      System.out.println("Please enter your marks in 5 subjects: ");
+      for(i=1;i<=5;i++)
+      {
+         marks[i] = scan.nextInt();
+      }
+      System.out.println("Please enter your credits in those 5 subjects in the same order: ");
+      for(i=1;i<=5;i++)
+      {
+         credits[i] = scan.nextChar();
+      }
+   }
+
+   public void calSGPA()
+   {
+        int i;   
+        double SGPA, totalA, totalB;
+        for(i = 0; i<=5; i++)
+        {
+         totalA = marks[i]*credits[i] + totalA;
+         totalB = credits[i] + totalB;
+        }
+        SGPA= (totalA*10)/totalB;
+   }
+
+   public void display()
+   {
+        int i;
+        System.out.println("Name: " + name); 
+        System.out.println("USN: " + usn);  
+        for(i=0;i<=5;i++)
+        {
+           System.out.println(marks[i] + " ");
+        }
+        for(i=0;i<=5;i++)
+        {
+           System.out.println(credits[i] + " ");
+        }
+        System.out.println("SGPA" + SGPA);
+   }
+}
+
+public class Java8
+{
+   public static void main(String args[])
+   {
+      int i;
+      Scanner scan = new Scanner(System.in);
+      System.out.println("Enter the number of students: "); 
+      int num = scan.nextInt();
+      Student ob[] = new Student[num];
+      for(i=1;i<=5;i++)
+      {
+        ob[i] = new Student();
+        ob[i].accept();
+        ob[i].calSGPA();
+        ob[i].display();
+      }
+   }
+}       
