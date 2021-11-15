@@ -1,78 +1,86 @@
-import java.util.Scanner;
+/* Java program to create a class Student with members usn, name, an array credits
+   and an array marks. Include methods to accept and display details and a method to calculate
+   SGPA of a student. */
+
 import java.lang.*;
+import java.util.Scanner;
 
 class Student
-{  
-   String name;
-   int usn;
-   char credits[];
-   int marks[];
-   double SGPA;
+{
+    int usn;
+    String name;
+    int[] credits;
+    int[] marks;
+    double SGPA;
+    double total;
+    double totCred;
 
-   public void accept()
-   {
-      int i;
-      Scanner scan = new Scanner(System.in);
-      name = scan.nextLine();
-      System.out.println("Please enter the name: " + name);
-      usn = scan.nextInt();
-      System.out.println("Please enter the usn: " + usn);
-      System.out.println("Please enter your marks in 5 subjects: ");
-      for(i=1;i<=5;i++)
-      {
-         marks[i] = scan.nextInt();
-      }
-      System.out.println("Please enter your credits in those 5 subjects in the same order: ");
-      for(i=1;i<=5;i++)
-      {
-         credits[i] = scan.nextChar();
-      }
-   }
+    void accept()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your usn: ");
+        usn = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Enter your name: ");
+        name = sc.nextLine();
+        System.out.println("Enter your marks in 6 subjects: ");
+        marks = new int[6];
+        for(int i=0;i<=5;i++)
+        {
+            marks[i] = sc.nextInt();
+        }
+        System.out.println("Enter your credits: ");
+        credits = new int[6];
+        for(int i=0;i<=5;i++)
+        {
+            credits[i] = sc.nextInt();
+        }
+    }
 
-   public void calSGPA()
-   {
-        int i;   
-        double SGPA, totalA, totalB;
-        for(i = 0; i<=5; i++)
+    void calSGPA()
+    {
+        for(int i=0;i<=5;i++)
         {
-         totalA = marks[i]*credits[i] + totalA;
-         totalB = credits[i] + totalB;
+            total = total + marks[i]*credits[i];
+            totCred = totCred + credits[i];
         }
-        SGPA= (totalA*10)/totalB;
-   }
+        SGPA = total/totCred;
+    }
 
-   public void display()
-   {
-        int i;
-        System.out.println("Name: " + name); 
-        System.out.println("USN: " + usn);  
-        for(i=0;i<=5;i++)
+    void display()
+    {
+        System.out.println("Name: " + name);
+        System.out.println("USN: " + usn);
+        System.out.println("Marks: ");
+        for(int i=0;i<=5;i++)
         {
-           System.out.println(marks[i] + " ");
+            System.out.println(marks[i] + "");
         }
-        for(i=0;i<=5;i++)
+        System.out.println("Credits: ");
+        for(int i=0;i<=5;i++)
         {
-           System.out.println(credits[i] + " ");
+            System.out.println(credits[i] + "");
         }
-        System.out.println("SGPA" + SGPA);
-   }
+        System.out.println();
+        System.out.println("SGPA: " + SGPA);
+    }
 }
 
-public class Java8
+public class Java64
 {
-   public static void main(String args[])
-   {
-      int i;
-      Scanner scan = new Scanner(System.in);
-      System.out.println("Enter the number of students: "); 
-      int num = scan.nextInt();
-      Student ob[] = new Student[num];
-      for(i=1;i<=5;i++)
-      {
-        ob[i] = new Student();
-        ob[i].accept();
-        ob[i].calSGPA();
-        ob[i].display();
-      }
-   }
-}       
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        int n,j;
+        System.out.println("Enter the number of students: ");
+        n = scan.nextInt();
+        Student [] ob = new Student[n];
+        for(j=0;j<=n;j++)
+        {
+            ob[j] = new Student();
+            ob[j].accept();
+            ob[j].calSGPA();
+            ob[j].display();
+        }
+    }
+}
