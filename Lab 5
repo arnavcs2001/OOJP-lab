@@ -1,0 +1,80 @@
+/* Develop a Java
+program to create an abstract class named Shape that contains two integers
+and an empty method named printArea( ). Provide three classes named
+Rectangle, Triangle and Circle such that each one of the classes extends the
+class Shape. Each one of the classes contain only the method printArea( )
+that prints the area of the given shape.
+*/
+
+import java.lang.*;
+import java.util.Scanner;
+
+abstract class shape
+{
+   int l;
+   int b;
+   void printArea()
+   {
+   
+   }
+}
+
+class Rectangle extends shape
+{
+   void printArea()
+   {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Please enter the length: ");  
+      l = sc.nextInt();
+      System.out.println("Please enter the breadth: ");  
+      b = sc.nextInt();
+      int area;
+      area = l*b;
+      System.out.println("the area is " + area);  
+   }
+} 
+
+class RightTriangle extends shape
+{
+   void printArea()
+   {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Please enter the height: ");  
+      l = sc.nextInt();
+      System.out.println("Please enter the length of the base: ");  
+      b = sc.nextInt();
+      int area;
+      area = 1/2*l*b;
+      System.out.println("the area is " + area);  
+   }
+} 
+
+class Circle extends shape
+{
+   void printArea()
+   {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Please enter the circumference: ");  
+      l = sc.nextInt();
+      System.out.println("Please enter the diameter: ");  
+      b = sc.nextInt();
+      int area;
+      area = (l*b)/4; // l = circumference and b = diameter
+      System.out.println("the area is " + area);  
+   }
+} 
+
+
+public class Java9
+{
+   public static void main(String []args)
+   {
+      Rectangle ob1 = new Rectangle();
+      RightTriangle ob2 = new RightTriangle();
+      Circle ob3 = new Circle();
+      ob1.printArea();
+      ob2.printArea();
+      ob3.printArea();
+   }
+}
+ 
