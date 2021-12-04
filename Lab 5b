@@ -1,0 +1,167 @@
+/* Java program to create a class Bank that maintains two kinds of account for
+its customers, one called savings account and the other current account. The
+savings account provides compound interest and withdrawal facilities but no
+cheque book facility. The current account provides cheque book facility but
+no interest. Current account holders should also maintain a minimum balance
+and if the balance falls below this level, a service charge is imposed.
+Create a class Account that stores customer name, account number and type of account. From
+this derive the classes Curr-acct and Sav-acct to make them more specific to
+their requirements. Include the necessary methods in order to achieve the
+following tasks:
+a) Accept deposit from customer and update the balance.
+b) Display the balance.
+c) Compute and deposit interest
+d) Permit withdrawal and update the balance
+Check for the minimum balance, impose penalty if necessary and update the balance. */
+
+import java.lang.*;
+import java.util.Scanner;
+
+class Bank
+{
+    String name;
+    int acc_no;
+    double bal,s;
+
+    void accept()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the name: ");
+        name = sc.nextLine();
+        System.out.println("Enter the account number: ");
+        acc_no = sc.nextInt();
+        System.out.println("Enter the balance: ");
+        bal = sc.nextFloat();
+    }
+
+    void display()
+    {
+        System.out.println("Details: ");
+        System.out.println("Name: " + name + "\nAccount number: " + acc_no + "\nBalance: " + bal);
+    }
+
+    void deposit()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Do you want to deposit (1 for yes, 2 for no): ");
+        int d = sc.nextInt();
+        if(d==1)
+        {
+            System.out.println("Enter the amount to be deposited: ");
+            int amt = sc.nextInt();
+            bal = bal + amt;
+            System.out.println("Available balance: " + bal);
+        }
+    }
+}
+
+class saving extends Bank
+{
+    void cheque()
+    {
+        System.out.println("No check service\n");
+    }
+
+    void simpleInterest()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the rate of interest: ");
+        double r = sc.nextDouble();
+        System.out.println("Enter the number of times interest applied per time period: ");
+        double n = sc.nextDouble();
+        System.out.println("Enter the time period: ");
+        double t = sc.nextDouble();
+        s = bal*(Math.pow(1+r/n,n*t));
+        System.out.println("Simple interest is Rs " + s);
+    }
+
+    void withdrawal()
+    {
+        double amount;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("No minimum balance required ");
+        System.out.println("Enter the amount to be withdrawn ");
+        amount = sc.nextDouble();
+        if(amount>bal)
+        {
+            System.out.println("Balance is insufficient ");
+        }
+        else
+        {
+            bal = bal - amount;
+            System.out.println(amount + " withdrawn");
+            System.out.println("Available balance = " + bal);
+        }
+    }
+}
+
+class current extends Bank
+{
+    double service_charge = 100;
+
+    void cheque()
+    {
+        System.out.println("Check service available \n");
+    }
+
+    void withdrawal()
+    {
+        double amount;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("No minimum balance required ");
+        System.out.println("Enter the amount to be withdrawn ");
+        amount = sc.nextDouble();
+        if(amount>bal)
+        {
+            System.out.println("Balance is insufficient ");
+        }
+        else
+        {
+            bal = bal - amount;
+            if(bal<1000)
+            {
+                bal = bal - service_charge;
+                System.out.println("Service charge of Rs " + service_charge + " has been added.");
+                System.out.println("Available balance = " + bal);
+            }
+            else
+            {
+                System.out.println(amount + " withdrawn");
+                System.out.println("Available balance = " + bal);
+            }
+        }
+    }
+}
+
+public class Java66
+{
+    public static void main(String[] args)
+    {
+         saving ob1 = new saving();
+         current ob2 = new current();
+        System.out.println("1. Savings ");
+        System.out.println("2. Current ");
+        System.out.println("Enter your choice: ");
+        Scanner sc = new Scanner(System.in);
+        int ch = sc.nextInt();
+        switch(ch)
+        {
+            case 1: ob1.accept();
+                    ob1.display();
+                    ob1.cheque();
+                    ob1.deposit();
+                    ob1.simpleInterest();
+                    ob1.withdrawal();
+                    break;
+
+            case 2: ob2.accept();
+                    ob2.display();
+                    ob2.cheque();
+                    ob2.deposit();
+                    ob2.withdrawal();
+                    break;
+
+            default: System.out.println("Invalid input ");
+        }
+    }
+}
