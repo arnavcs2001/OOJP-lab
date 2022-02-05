@@ -1,6 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
+
 class WrongAge extends Exception
 {
   public String toString()
