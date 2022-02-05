@@ -1,0 +1,76 @@
+import java.util.*;
+import java.lang.*;
+
+class WrongAge extends Exception
+{
+  public String toString()
+  {
+     return "Wrong Age entered!!";
+  }
+  public String getMessage()
+  {
+     return "Wrong Age entered!!";
+  }
+}
+
+class Father 
+{
+  int age;
+ 
+  Father(int age)
+  {
+    this.age = age; 
+  }
+  
+  void throwError() throws WrongAge
+  {
+    if(age<=0)
+    {
+       throw new WrongAge();
+    }
+  } 
+}
+
+class Son extends Father
+{
+  int age1;
+  
+  Son(int age1)
+  {
+    super(age1);
+    this.age1 = age1; 
+  }
+
+  void throwError1() throws WrongAge
+  {
+    if(age1>=age)
+    {
+       throw new WrongAge();
+    }
+  } 
+
+}
+
+public class ExceptionHandling
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int ag,ag1;
+        System.out.println("Please enter age of the father:");
+        ag = sc.nextInt();
+        System.out.println("Please enter age of the son:");
+        ag1 = sc.nextInt();
+        try
+        {
+           Father ob1 = new Father(ag);
+           Son ob2 = new Son(ag1);
+           ob1.throwError();
+           ob2.throwError1();
+        }
+        catch(WrongAge e)
+        {
+           System.out.println("Exception: " + e);
+        }
+    }
+}
