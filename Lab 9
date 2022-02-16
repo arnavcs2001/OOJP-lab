@@ -1,0 +1,75 @@
+/* Write a program which creates two threads, one thread displaying "BMS College of
+   Engineering" once every ten seconds and another displaying "CSE" once every two seconds. */
+
+import java.util.*;
+import java.lang.*;
+
+class Display implements Runnable
+{
+    String name;
+    Thread t;
+    Display(String threadname)
+    {
+        name = threadname;
+        t = new Thread(this,name);
+    }
+    public void run()
+    {
+        for(int i = 0; i < 20; i++)
+        {
+            System.out.println(name);
+            try
+            {
+                Thread.sleep(10000);
+            }
+            catch(InterruptedException e)
+            {
+                System.out.println("Interrupted");
+            }
+        }
+    }
+}
+
+class Display1 implements Runnable
+{
+    String name1;
+    Thread t1;
+    Display1(String threadname1)
+    {
+        name1 = threadname1;
+        t1 = new Thread(this,name1);
+    }
+    public void run()
+    {
+        for(int i = 0; i < 20; i++)
+        {
+            System.out.println(name1);
+            try
+            {
+                Thread.sleep(2000);
+            }
+            catch(InterruptedException e)
+            {
+                System.out.println("Interrupted");
+            }
+        }
+    }
+}
+public class Multithreading
+{
+    public static void main(String[] args)
+    {
+        String str,str1;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter a string to be displayed every 10 seconds: ");
+        str = sc.nextLine();
+        System.out.println("Please enter a string to be displayed every 2 seconds: ");
+        str1 = sc.nextLine();
+
+        Display d = new Display(str);
+        Display1 d1 = new Display1(str1);
+
+        d.t.start();
+        d1.t1.start();
+    }
+}
